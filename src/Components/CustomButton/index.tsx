@@ -21,13 +21,13 @@ const CustomButton = styled(Button)(({ theme }) => ({
   fontFamily: 'gotham-bold',
   fontSize: '12px',
   letterSpacing: '0.05rem',
-  backgroundColor: theme.palette.secondary.main,
-  color: theme.palette.secondary.contrastText,
+  backgroundColor: '#8462F6',
+  color: '#FFF',
   padding: '2px 18px',
   height: '36px',
   textTransform: 'none',
   '&:hover': {
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: '#8462F6'
   },
   [theme.breakpoints.down('mobile')]: {
     padding: '0 12px',

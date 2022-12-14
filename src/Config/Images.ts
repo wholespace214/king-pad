@@ -11,6 +11,7 @@ import YoutubeIcon from '../Assets/svg/iconboxyt.svg';
 import LaunchPadIcon from '../Assets/png/headerpic1.png';
 import KingLogoIcon from '../Assets/png/headerpic2.png';
 import HelmetIcon from '../Assets/png/headerpic3.png';
+import SupportCardImg from '../Assets/png/support.png';
 
 export {
   LOGO,
@@ -25,5 +26,6 @@ export {
   YoutubeIcon,
   LaunchPadIcon,
   KingLogoIcon,
-  HelmetIcon
+  HelmetIcon,
+  SupportCardImg
 };
