@@ -1,0 +1,36 @@
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  background-color: '#1A003E';
+  border: 1px solid #8462f6;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 5.2px;
+  position: relative;
+  height: 32px;
+  width: 54px;
+  z-index: 0;
+}
+
+.label .ball {
+  background-color: #8462f6;
+  z-index: -1;
+  border-radius: 50%;
+  position: absolute;
+  top: 3.46px;
+  left: 3.4px;
+  height: 23px;
+  width: 23px;
+  transform: translateX(0px);
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(22px);
+}
