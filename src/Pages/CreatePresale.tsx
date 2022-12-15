@@ -15,6 +15,7 @@ import {
   lightUsdcIcon
 } from 'src/Config/Images';
 import { Dropdown } from 'src/Components/Dropdown';
+import { RateCard } from 'src/Components/Cards/RateCard';
 
 export const CreatePresale = () => {
   const [currecy, setCurrency] = useState(0);
@@ -74,6 +75,20 @@ export const CreatePresale = () => {
         </TokenDetails>
         <SupportCard />
       </TokenDetailsContainer>
+      <RateCardContainer>
+        <RateCard title="Presale rate" help="If I spend 1 BNB, how many token will I receive?" />
+        <RateCard title="Listing rate" help="If I spend 1 BNB, how many token will I receive?" />
+      </RateCardContainer>
+      <BNBCardContainer>
+        <RateCard title="Softcap" content="BNB" help="The minimum amount of allocated BNB in your presale." />
+        <RateCard title="Hardcap" content="BNB" help="The minimum amount of allocated BNB in your presale." />
+        <RateCard
+          title="Min contribution"
+          content="BNB"
+          help="The minimum amount that must be contributed to your presale."
+        />
+        <RateCard title="Max contribution" content="BNB" help="The maximum conitrbution amount allowed per wallet." />
+      </BNBCardContainer>
     </>
   );
 };
@@ -209,4 +224,29 @@ const TokenSwap = styled(Box)(({ theme }) => ({
 const TokenSwapLabel = styled(Box)(({ theme }) => ({
   fontSize: '16px',
   color: '#8462F6'
+}));
+
+const RateCardContainer = styled(Box)(({ theme }) => ({
+  paddingTop: '25px',
+  display: 'flex',
+  width: '100%',
+  justifyContent: 'space-between',
+  gap: '14px',
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column'
+  }
+}));
+
+const BNBCardContainer = styled(Box)(({ theme }) => ({
+  paddingTop: '25px',
+  display: 'grid',
+  width: '100%',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  gap: '14px',
+  [theme.breakpoints.down('xl')]: {
+    gridTemplateColumns: 'repeat(2, 2fr)'
+  },
+  [theme.breakpoints.down('md')]: {
+    gridTemplateColumns: 'repeat(1, 4fr)'
+  }
 }));
