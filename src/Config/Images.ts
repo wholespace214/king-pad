@@ -16,6 +16,10 @@ import BnbIcon from '../Assets/svg/Currency-01.svg';
 import BusdIcon from '../Assets/svg/Currency-02.svg';
 import UsdtIcon from '../Assets/svg/Currency-03.svg';
 import UsdcIcon from '../Assets/svg/Currency-04.svg';
+import lightBnbIcon from '../Assets/svg/whiteCurrency-01.svg';
+import lightBusdIcon from '../Assets/svg/whiteCurrency-02.svg';
+import lightUsdtIcon from '../Assets/svg/whiteCurrency-03.svg';
+import lightUsdcIcon from '../Assets/svg/whiteCurrency-04.svg';
 
 export {
   LOGO,
@@ -33,7 +37,11 @@ export {
   HelmetIcon,
   SupportCardImg,
   BnbIcon,
+  lightBnbIcon,
   BusdIcon,
+  lightBusdIcon,
   UsdtIcon,
-  UsdcIcon
+  lightUsdtIcon,
+  UsdcIcon,
+  lightUsdcIcon
 };

@@ -2,7 +2,8 @@ import { Box, Button } from '@mui/material';
 import { styled } from '@mui/system';
 
 interface TokenButtonProps {
-  icon: string;
+  darkIcon: string;
+  lightIcon: string;
   name: string;
   isClicked: boolean;
   onClick?: () => void;
@@ -13,10 +14,10 @@ interface TokenProps {
 }
 
 export const TokenButton = (props: TokenButtonProps) => {
-  const { icon, name, isClicked, onClick } = props;
+  const { darkIcon, lightIcon, name, isClicked, onClick } = props;
   return (
     <TokenButtonContainer onClick={onClick} isClicked={isClicked}>
-      <Img src={icon} alt="token-icon" />
+      <Img src={isClicked ? lightIcon : darkIcon} alt="token-icon" />
       <TokenName isClicked={isClicked}>{name}</TokenName>
     </TokenButtonContainer>
   );

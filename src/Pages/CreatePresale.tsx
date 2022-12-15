@@ -4,7 +4,16 @@ import { styled } from '@mui/system';
 import { SupportCard } from 'src/Components/Cards/SupportCard';
 import { SmallText } from 'src/Components/Text/SmallText';
 import { TokenButton } from 'src/Components/TokenButton';
-import { BnbIcon, BusdIcon, UsdtIcon, UsdcIcon } from 'src/Config/Images';
+import {
+  BnbIcon,
+  BusdIcon,
+  UsdtIcon,
+  UsdcIcon,
+  lightBnbIcon,
+  lightBusdIcon,
+  lightUsdtIcon,
+  lightUsdcIcon
+} from 'src/Config/Images';
 import { Dropdown } from 'src/Components/Dropdown';
 
 export const CreatePresale = () => {
@@ -27,10 +36,34 @@ export const CreatePresale = () => {
           <TokenCurrencyCard>
             <CurrencyLabel>Currency</CurrencyLabel>
             <CurrencyButtons>
-              <TokenButton icon={BnbIcon} name="BNB" isClicked={currecy === 0} onClick={() => setCurrency(0)} />
-              <TokenButton icon={BusdIcon} name="BUSD" isClicked={currecy === 1} onClick={() => setCurrency(1)} />
-              <TokenButton icon={UsdtIcon} name="USDT" isClicked={currecy === 2} onClick={() => setCurrency(2)} />
-              <TokenButton icon={UsdcIcon} name="USDC" isClicked={currecy === 3} onClick={() => setCurrency(3)} />
+              <TokenButton
+                darkIcon={BnbIcon}
+                lightIcon={lightBnbIcon}
+                name="BNB"
+                isClicked={currecy === 0}
+                onClick={() => setCurrency(0)}
+              />
+              <TokenButton
+                darkIcon={BusdIcon}
+                lightIcon={lightBusdIcon}
+                name="BUSD"
+                isClicked={currecy === 1}
+                onClick={() => setCurrency(1)}
+              />
+              <TokenButton
+                darkIcon={UsdtIcon}
+                lightIcon={lightUsdtIcon}
+                name="USDT"
+                isClicked={currecy === 2}
+                onClick={() => setCurrency(2)}
+              />
+              <TokenButton
+                darkIcon={UsdcIcon}
+                lightIcon={lightUsdcIcon}
+                name="USDC"
+                isClicked={currecy === 3}
+                onClick={() => setCurrency(3)}
+              />
             </CurrencyButtons>
             <CurrencySupport>Choose the currency you want to create the pair with</CurrencySupport>
           </TokenCurrencyCard>
