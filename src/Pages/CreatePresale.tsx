@@ -1,9 +1,15 @@
+import { useState } from 'react';
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 import { SupportCard } from 'src/Components/Cards/SupportCard';
 import { SmallText } from 'src/Components/Text/SmallText';
+import { TokenButton } from 'src/Components/TokenButton';
+import { BnbIcon, BusdIcon, UsdtIcon, UsdcIcon } from 'src/Config/Images';
+import { Dropdown } from 'src/Components/Dropdown';
 
 export const CreatePresale = () => {
+  const [currecy, setCurrency] = useState(0);
+  const [itemValue, setItemValue] = useState('Pancakeswap');
   return (
     <>
       <BannerCard>Banner ( to do ) </BannerCard>
@@ -18,6 +24,20 @@ export const CreatePresale = () => {
               <TokenUnit title="Decimal" />
             </TokenInfo>
           </TokenAddressCard>
+          <TokenCurrencyCard>
+            <CurrencyLabel>Currency</CurrencyLabel>
+            <CurrencyButtons>
+              <TokenButton icon={BnbIcon} name="BNB" isClicked={currecy === 0} onClick={() => setCurrency(0)} />
+              <TokenButton icon={BusdIcon} name="BUSD" isClicked={currecy === 1} onClick={() => setCurrency(1)} />
+              <TokenButton icon={UsdtIcon} name="USDT" isClicked={currecy === 2} onClick={() => setCurrency(2)} />
+              <TokenButton icon={UsdcIcon} name="USDC" isClicked={currecy === 3} onClick={() => setCurrency(3)} />
+            </CurrencyButtons>
+            <CurrencySupport>Choose the currency you want to create the pair with</CurrencySupport>
+          </TokenCurrencyCard>
+          <TokenSwap>
+            <TokenSwapLabel>Router</TokenSwapLabel>
+            <Dropdown itemValue={itemValue} setItemValue={setItemValue} />
+          </TokenSwap>
         </TokenDetails>
         <SupportCard />
       </TokenDetailsContainer>
@@ -106,4 +126,54 @@ const TokenInfo = styled(Box)(({ theme }) => ({
 
 const TokenUnitContainer = styled(Box)(({ theme }) => ({
   textAlign: 'center'
+}));
+
+const TokenCurrencyCard = styled(Box)(({ theme }) => ({
+  padding: '20px 70px',
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: '15px',
+  boxShadow: '0px 3px 6px #00000029',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  [theme.breakpoints.down(1250)]: {
+    padding: '20px 30px'
+  }
+}));
+
+const CurrencyLabel = styled(Box)(({ theme }) => ({
+  color: '#8462F6',
+  fontSize: '16px'
+}));
+
+const CurrencyButtons = styled(Box)(({ theme }) => ({
+  display: 'grid',
+  justifyContent: 'center',
+  width: '100%',
+  gridTemplateColumns: 'auto auto auto auto',
+  gap: '18px',
+  marginTop: '13px',
+  [theme.breakpoints.down(1440)]: {
+    gridTemplateColumns: 'auto auto'
+  }
+}));
+
+const CurrencySupport = styled(Box)(({ theme }) => ({
+  fontSize: '12px',
+  color: theme.palette.primary.contrastText,
+  paddingTop: '26px',
+  textAlign: 'center'
+}));
+
+const TokenSwap = styled(Box)(({ theme }) => ({
+  boxShadow: '0px 3px 6px #00000029',
+  borderRadius: '15px',
+  background: theme.palette.primary.main,
+  padding: '23px',
+  textAlign: 'center'
+}));
+
+const TokenSwapLabel = styled(Box)(({ theme }) => ({
+  fontSize: '16px',
+  color: '#8462F6'
 }));

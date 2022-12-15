@@ -12,6 +12,10 @@ import LaunchPadIcon from '../Assets/png/headerpic1.png';
 import KingLogoIcon from '../Assets/png/headerpic2.png';
 import HelmetIcon from '../Assets/png/headerpic3.png';
 import SupportCardImg from '../Assets/png/support.png';
+import BnbIcon from '../Assets/svg/Currency-01.svg';
+import BusdIcon from '../Assets/svg/Currency-02.svg';
+import UsdtIcon from '../Assets/svg/Currency-03.svg';
+import UsdcIcon from '../Assets/svg/Currency-04.svg';
 
 export {
   LOGO,
@@ -27,5 +31,9 @@ export {
   LaunchPadIcon,
   KingLogoIcon,
   HelmetIcon,
-  SupportCardImg
+  SupportCardImg,
+  BnbIcon,
+  BusdIcon,
+  UsdtIcon,
+  UsdcIcon
 };

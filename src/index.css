@@ -44,3 +44,8 @@ p {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.MuiPaper-root {
+  box-shadow: none !important;
+  background-image: none !important;
+}
