@@ -11,6 +11,6 @@ export const MiniText = ({ children }: MiniTextProps) => {
 
 const MiniTextContainer = styled(Box)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
-  fontSize: '10px',
+  fontSize: '12px',
   textAlign: 'center'
 }));

@@ -16,10 +16,12 @@ import {
 } from 'src/Config/Images';
 import { Dropdown } from 'src/Components/Dropdown';
 import { RateCard } from 'src/Components/Cards/RateCard';
+import { RefundCard } from 'src/Components/Cards/RefundCard';
 
 export const CreatePresale = () => {
   const [currecy, setCurrency] = useState(0);
   const [itemValue, setItemValue] = useState('Pancakeswap');
+  const [isBurn, setBurn] = useState(true);
   return (
     <>
       <BannerCard>Banner ( to do ) </BannerCard>
@@ -88,6 +90,14 @@ export const CreatePresale = () => {
           help="The minimum amount that must be contributed to your presale."
         />
         <RateCard title="Max contribution" content="BNB" help="The maximum conitrbution amount allowed per wallet." />
+      </BNBCardContainer>
+      <BNBCardContainer>
+        <RateCard
+          title="Liquidity %"
+          help="Enter the percentage of raised funds that should be allocated to Liquidiity on Exchange (Min 51% Max 100%)"
+        />
+        <RateCard title="Liquidity lock" content="DAYS" help="How long do you want to lock LP after launch?" />
+        <RefundCard isState={isBurn} setState={setBurn} />
       </BNBCardContainer>
     </>
   );
