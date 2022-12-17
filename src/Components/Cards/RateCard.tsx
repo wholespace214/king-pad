@@ -9,12 +9,19 @@ interface RateCardProps {
   value?: string;
   content?: string;
   help: string;
+  isDisabled?: boolean;
+  flexNum?: number;
+}
+
+interface containerProps {
+  isDisabled: boolean;
+  flexNum?: number;
 }
 
 export const RateCard = (props: RateCardProps) => {
-  const { title, value, content, help } = props;
+  const { title, value, content, help, isDisabled, flexNum } = props;
   return (
-    <RateCardContainer>
+    <RateCardContainer isDisabled={isDisabled === undefined ? false : isDisabled} flexNum={flexNum}>
       <SmallText>{title}</SmallText>
       {value === undefined ? <LargeText>-</LargeText> : <LargeText> {value} </LargeText>}
       {content !== undefined && <ContentText>{content}</ContentText>}
@@ -23,8 +30,8 @@ export const RateCard = (props: RateCardProps) => {
   );
 };
 
-const RateCardContainer = styled(Box)(({ theme }) => ({
-  padding: '32px',
+const RateCardContainer = styled(Box)<containerProps>(({ isDisabled, flexNum, theme }) => ({
+  padding: '32px 16px',
   boxShadow: '0px 3px 6px #00000029',
   backgroundColor: theme.palette.primary.main,
   display: 'flex',
@@ -32,7 +39,10 @@ const RateCardContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   gap: '16px',
   width: '100%',
-  borderRadius: '15px'
+  borderRadius: '15px',
+  opacity: isDisabled ? 0.6 : 1,
+  flex: flexNum,
+  justifyContent: 'center'
 }));
 
 const ContentText = styled(Box)(({ theme }) => ({

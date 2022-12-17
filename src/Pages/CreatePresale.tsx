@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { styled } from '@mui/system';
 import { SupportCard } from 'src/Components/Cards/SupportCard';
 import { SmallText } from 'src/Components/Text/SmallText';
@@ -17,11 +17,18 @@ import {
 import { Dropdown } from 'src/Components/Dropdown';
 import { RateCard } from 'src/Components/Cards/RateCard';
 import { RefundCard } from 'src/Components/Cards/RefundCard';
+import { PresaleCard } from 'src/Components/Cards/PresaleCard';
+import { Dayjs } from 'dayjs';
+import { KingpassCard } from 'src/Components/Cards/KingpassCard';
+import { AboutToken } from './CreatePresale/AboutToken';
+import { TokenDescription } from './CreatePresale/TokenDescription';
 
 export const CreatePresale = () => {
   const [currecy, setCurrency] = useState(0);
   const [itemValue, setItemValue] = useState('Pancakeswap');
   const [isBurn, setBurn] = useState(true);
+  const [dateTime1, setDateTime1] = useState<Dayjs | null>(null);
+  const [dateTime2, setDateTime2] = useState<Dayjs | null>(null);
   return (
     <>
       <BannerCard>Banner ( to do ) </BannerCard>
@@ -99,6 +106,51 @@ export const CreatePresale = () => {
         <RateCard title="Liquidity lock" content="DAYS" help="How long do you want to lock LP after launch?" />
         <RefundCard isState={isBurn} setState={setBurn} />
       </BNBCardContainer>
+      <PresaleContainer>
+        <PresaleCard title="Presale starts" state={dateTime1} setState={setDateTime1} />
+        <PresaleCard title="Presale end" state={dateTime2} setState={setDateTime2} />
+        <KingpassCard />
+      </PresaleContainer>
+      <EnableVestButton>
+        <SmallText>Enable team vesting</SmallText>
+      </EnableVestButton>
+      <VestingContainer>
+        <RateCard
+          title="Total team vesting tokens"
+          help="How many tokens do you want to lock?"
+          isDisabled={true}
+          flexNum={2}
+        />
+        <VestingDetailsContainer>
+          <RateCard
+            title="First release after listing"
+            content="Days"
+            help="After how many days the vesting starts?"
+            isDisabled={true}
+          />
+          <RateCard
+            title="First release Amount"
+            content="%"
+            help="How many token do you want to unlock in the first release?"
+            isDisabled={true}
+          />
+          <RateCard
+            title="Vesting period each cycle"
+            content="Days"
+            help="How often do you want to unlock your tokens?"
+            isDisabled={true}
+          />
+          <RateCard
+            title="Token release each cycle"
+            content="%"
+            help="How many token do you want to ulock each cycle?"
+            isDisabled={true}
+          />
+        </VestingDetailsContainer>
+      </VestingContainer>
+      <AboutToken />
+      <TokenDescription />
+      <LauchButton>LAUNCH YOUR PRESALE</LauchButton>
     </>
   );
 };
@@ -248,7 +300,7 @@ const RateCardContainer = styled(Box)(({ theme }) => ({
 }));
 
 const BNBCardContainer = styled(Box)(({ theme }) => ({
-  paddingTop: '25px',
+  paddingTop: '18px',
   display: 'grid',
   width: '100%',
   gridTemplateColumns: 'repeat(4, 1fr)',
@@ -258,5 +310,72 @@ const BNBCardContainer = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down('md')]: {
     gridTemplateColumns: 'repeat(1, 4fr)'
+  }
+}));
+
+const PresaleContainer = styled(Box)(({ theme }) => ({
+  paddingTop: '18px',
+  display: 'grid',
+  width: '100%',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  gap: '14px',
+  [theme.breakpoints.down('md')]: {
+    display: 'flex',
+    flexDirection: 'column'
+  }
+}));
+
+const EnableVestButton = styled(Box)(({ theme }) => ({
+  boxShadow: '0px 3px 6px #00000029',
+  borderRadius: '15px',
+  backgroundColor: theme.palette.primary.main,
+  padding: '24px',
+  textAlign: 'center',
+  width: '100%',
+  marginTop: '20px'
+}));
+
+const VestingContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  marginTop: '11px',
+  width: '100%',
+  justifyContent: 'center',
+  gap: '16px',
+  [theme.breakpoints.down('xl')]: {
+    flexDirection: 'column'
+  }
+}));
+
+const VestingDetailsContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  gap: '16px',
+  width: '100%',
+  flex: 4,
+  [theme.breakpoints.down('md')]: {
+    flex: 'inherit',
+    display: 'grid',
+    gridTemplateColumns: 'auto auto'
+  },
+  [theme.breakpoints.down('mobile')]: {
+    gridTemplateColumns: 'auto'
+  }
+}));
+
+const LauchButton = styled(Button)(({ theme }) => ({
+  padding: '15px',
+  fontSize: '18px',
+  textAlign: 'center',
+  backgroundColor: '#8462F6',
+  boxShadow: '0px 3px 6px #00000029',
+  borderRadius: '15px',
+  color: '#FFFFFF',
+  width: '100%',
+  marginTop: '37px',
+  fontFamily: 'gotham-bold',
+  '&:hover': {
+    backgroundColor: '#8462F6'
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '13px'
   }
 }));
