@@ -37,10 +37,11 @@ const TeatArea = styled('textarea')(({ theme }) => ({
   border: 'none',
   height: '250px',
   resize: 'none',
+  fontFamily: 'gotham-book',
+  fontSize: '12px',
   color: theme.palette.primary.contrastText,
   '::placeholder': {
     color: theme.palette.primary.contrastText,
-    fontSize: '12px',
     opacity: 0.6
   }
 }));

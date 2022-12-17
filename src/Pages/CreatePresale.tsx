@@ -29,6 +29,7 @@ export const CreatePresale = () => {
   const [isBurn, setBurn] = useState(true);
   const [dateTime1, setDateTime1] = useState<Dayjs | null>(null);
   const [dateTime2, setDateTime2] = useState<Dayjs | null>(null);
+  const [isVesting, setVesting] = useState(true);
   return (
     <>
       <BannerCard>Banner ( to do ) </BannerCard>
@@ -36,7 +37,7 @@ export const CreatePresale = () => {
         <TokenDetails>
           <TokenAddressCard>
             <SmallText>Token address</SmallText>
-            <MediumText>Insert your token address</MediumText>
+            <InputUrl placeholder="Insert url here" />
             <TokenInfo>
               <TokenUnit title="Name" />
               <TokenUnit title="Symbol" />
@@ -111,40 +112,39 @@ export const CreatePresale = () => {
         <PresaleCard title="Presale end" state={dateTime2} setState={setDateTime2} />
         <KingpassCard />
       </PresaleContainer>
-      <EnableVestButton>
-        <SmallText>Enable team vesting</SmallText>
+      <EnableVestButton onClick={() => setVesting(!isVesting)} status={isVesting}>
+        Enable team vesting
       </EnableVestButton>
       <VestingContainer>
         <RateCard
           title="Total team vesting tokens"
           help="How many tokens do you want to lock?"
-          isDisabled={true}
-          flexNum={2}
+          isDisabled={isVesting}
         />
         <VestingDetailsContainer>
           <RateCard
             title="First release after listing"
             content="Days"
             help="After how many days the vesting starts?"
-            isDisabled={true}
+            isDisabled={isVesting}
           />
           <RateCard
             title="First release Amount"
             content="%"
             help="How many token do you want to unlock in the first release?"
-            isDisabled={true}
+            isDisabled={isVesting}
           />
           <RateCard
             title="Vesting period each cycle"
             content="Days"
             help="How often do you want to unlock your tokens?"
-            isDisabled={true}
+            isDisabled={isVesting}
           />
           <RateCard
             title="Token release each cycle"
             content="%"
             help="How many token do you want to ulock each cycle?"
-            isDisabled={true}
+            isDisabled={isVesting}
           />
         </VestingDetailsContainer>
       </VestingContainer>
@@ -325,25 +325,40 @@ const PresaleContainer = styled(Box)(({ theme }) => ({
   }
 }));
 
-const EnableVestButton = styled(Box)(({ theme }) => ({
+interface VestButtonProps {
+  status: boolean;
+}
+
+const EnableVestButton = styled(Button)<VestButtonProps>(({ theme, status }) => ({
   boxShadow: '0px 3px 6px #00000029',
   borderRadius: '15px',
-  backgroundColor: theme.palette.primary.main,
-  padding: '24px',
+  backgroundColor: status ? theme.palette.primary.main : '#8462F6',
+  padding: '18px',
   textAlign: 'center',
   width: '100%',
-  marginTop: '20px'
+  marginTop: '20px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '16px',
+  textTransform: 'none',
+  color: status ? '#8462F6' : '#FFFFFF',
+  fontWeight: '700',
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '14px'
+  },
+  '&:hover': {
+    backgroundColor: status ? theme.palette.primary.main : '#8462F6'
+  }
 }));
 
 const VestingContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
+  display: 'grid',
   marginTop: '11px',
   width: '100%',
   justifyContent: 'center',
   gap: '16px',
-  [theme.breakpoints.down('xl')]: {
-    flexDirection: 'column'
-  }
+  gridTemplateColumns: 'repeat(1, 4fr)'
 }));
 
 const VestingDetailsContainer = styled(Box)(({ theme }) => ({
@@ -351,12 +366,12 @@ const VestingDetailsContainer = styled(Box)(({ theme }) => ({
   gap: '16px',
   width: '100%',
   flex: 4,
-  [theme.breakpoints.down('md')]: {
+  [theme.breakpoints.down(1450)]: {
     flex: 'inherit',
     display: 'grid',
     gridTemplateColumns: 'auto auto'
   },
-  [theme.breakpoints.down('mobile')]: {
+  [theme.breakpoints.down(571)]: {
     gridTemplateColumns: 'auto'
   }
 }));
@@ -377,5 +392,22 @@ const LauchButton = styled(Button)(({ theme }) => ({
   },
   [theme.breakpoints.down('sm')]: {
     fontSize: '13px'
+  }
+}));
+
+const InputUrl = styled('input')(({ theme }) => ({
+  textAlign: 'center',
+  width: '100%',
+  background: 'none',
+  outline: 'none',
+  border: 'none',
+  height: '20px',
+  fontFamily: 'gotham-bold',
+  fontSize: '18px',
+  marginTop: '10px',
+  color: theme.palette.primary.contrastText,
+  '::placeholder': {
+    color: theme.palette.primary.contrastText,
+    opacity: 0.6
   }
 }));
