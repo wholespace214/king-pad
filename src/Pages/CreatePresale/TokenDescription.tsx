@@ -37,7 +37,7 @@ const TeatArea = styled('textarea')(({ theme }) => ({
   border: 'none',
   height: '250px',
   resize: 'none',
-  fontFamily: 'gotham-book',
+  fontFamily: 'gotham-bold',
   fontSize: '12px',
   color: theme.palette.primary.contrastText,
   '::placeholder': {
