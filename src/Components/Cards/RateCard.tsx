@@ -22,7 +22,7 @@ export const RateCard = (props: RateCardProps) => {
   return (
     <RateCardContainer isDisabled={isDisabled === undefined ? false : isDisabled} sx={style}>
       <SmallText>{title}</SmallText>
-      {value === undefined ? <LargeText>-</LargeText> : <LargeText> {value} </LargeText>}
+      <InputUrl type={'number'} placeholder="-" value={value} disabled={isDisabled} />
       {content !== undefined && <ContentText>{content}</ContentText>}
       <MiniText>{help}</MiniText>
     </RateCardContainer>
@@ -46,4 +46,19 @@ const RateCardContainer = styled(Box)<containerProps>(({ isDisabled, theme }) =>
 const ContentText = styled(Box)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
   fontSize: '15px'
+}));
+
+const InputUrl = styled('input')(({ theme }) => ({
+  textAlign: 'center',
+  width: '100%',
+  background: 'none',
+  outline: 'none',
+  border: 'none',
+  height: '20px',
+  fontSize: '20px',
+  fontFamily: 'gotham-bold',
+  color: theme.palette.primary.contrastText,
+  '::placeholder': {
+    color: theme.palette.primary.contrastText
+  }
 }));
