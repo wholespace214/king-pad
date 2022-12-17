@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { styled } from '@mui/system';
 import { SupportCardImg } from 'src/Config/Images';
 import { KingButton } from '../CustomButton';
@@ -8,7 +8,7 @@ export const SupportCard = () => {
     <SupportCardContainer>
       <MediumText>Need support?</MediumText>
       <SupportImg src={SupportCardImg} alt="support-card" />
-      <KingButton>Contact us</KingButton>
+      <ContactButton>Contact us</ContactButton>
     </SupportCardContainer>
   );
 };
@@ -22,6 +22,8 @@ const SupportCardContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  alignItems: 'center',
+  gap: '26px',
   [theme.breakpoints.down('xl')]: {
     padding: '60px 72px'
   },
@@ -48,5 +50,26 @@ const SupportImg = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('desktop')]: {
     width: '200px',
     height: '200px'
+  }
+}));
+
+const ContactButton = styled(Button)(({ theme }) => ({
+  borderRadius: '30px',
+  fontFamily: 'gotham-bold',
+  fontSize: '14px',
+  letterSpacing: '0.05rem',
+  backgroundColor: '#8462F6',
+  color: '#FFF',
+  padding: '2px 18px',
+  height: '48px',
+  width: '140px',
+  textTransform: 'none',
+  '&:hover': {
+    backgroundColor: '#8462F6'
+  },
+  [theme.breakpoints.down('mobile')]: {
+    padding: '0 12px',
+    fontSize: '8px',
+    height: '28px'
   }
 }));
