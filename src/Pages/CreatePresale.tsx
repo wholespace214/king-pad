@@ -41,7 +41,7 @@ export const CreatePresale = () => {
             <TokenInfo>
               <TokenUnit title="Name" />
               <TokenUnit title="Symbol" />
-              <TokenUnit title="Decimal" />
+              <TokenUnit title="Decimal" type="number" />
             </TokenInfo>
           </TokenAddressCard>
           <TokenCurrencyCard>
@@ -158,13 +158,14 @@ export const CreatePresale = () => {
 interface TokenUnitProps {
   title: string;
   content?: string;
+  type?: string;
 }
 
-const TokenUnit = ({ title, content }: TokenUnitProps) => {
+const TokenUnit = ({ title, content, type }: TokenUnitProps) => {
   return (
     <TokenUnitContainer>
       <SmallText>{title}</SmallText>
-      <MediumText>{content !== undefined ? content : '-'}</MediumText>
+      <InputText placeholder="-" value={content} type={type} />
     </TokenUnitContainer>
   );
 };
@@ -211,17 +212,16 @@ const TokenAddressCard = styled(Box)(({ theme }) => ({
   }
 }));
 
-const MediumText = styled(Box)(({ theme }) => ({
-  paddingTop: '7px',
-  fontWeight: 600,
-  fontSize: '18px',
-  color: theme.palette.dark.contrastText,
-  [theme.breakpoints.down('md')]: {
-    fontSize: '15px'
-  },
-  [theme.breakpoints.down('xs')]: {
-    fontSize: '11px'
-  }
+const InputText = styled('input')(({ theme }) => ({
+  textAlign: 'center',
+  width: '100%',
+  background: 'none',
+  outline: 'none',
+  border: 'none',
+  height: '20px',
+  fontSize: '20px',
+  fontFamily: 'gotham-bold',
+  color: theme.palette.primary.contrastText
 }));
 
 const TokenInfo = styled(Box)(({ theme }) => ({
