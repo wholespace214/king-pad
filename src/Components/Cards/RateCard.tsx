@@ -22,7 +22,7 @@ export const RateCard = (props: RateCardProps) => {
   return (
     <RateCardContainer isDisabled={isDisabled === undefined ? false : isDisabled} sx={style}>
       <SmallText>{title}</SmallText>
-      <InputUrl type={'number'} placeholder="-" value={value} disabled={isDisabled} />
+      <InputUrl type={'number'} placeholder="-" value={value} disabled={isDisabled} maxLength={100} />
       {content !== undefined && <ContentText>{content}</ContentText>}
       <MiniText>{help}</MiniText>
     </RateCardContainer>

@@ -37,7 +37,7 @@ export const CreatePresale = () => {
         <TokenDetails>
           <TokenAddressCard>
             <SmallText>Token address</SmallText>
-            <InputUrl placeholder="Insert url here" />
+            <InputUrl placeholder="Insert contract address" />
             <TokenInfo>
               <TokenUnit title="Name" />
               <TokenUnit title="Symbol" />
@@ -408,7 +408,6 @@ const InputUrl = styled('input')(({ theme }) => ({
   marginTop: '10px',
   color: theme.palette.primary.contrastText,
   '::placeholder': {
-    color: theme.palette.primary.contrastText,
-    opacity: 0.6
+    color: theme.palette.primary.contrastText
   }
 }));

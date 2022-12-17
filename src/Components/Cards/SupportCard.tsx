@@ -19,6 +19,9 @@ const SupportCardContainer = styled(Box)(({ theme }) => ({
   borderRadius: '15px',
   boxShadow: '0px 3px 6px #00000029',
   textAlign: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
   [theme.breakpoints.down('xl')]: {
     padding: '60px 72px'
   },

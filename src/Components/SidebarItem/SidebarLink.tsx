@@ -23,5 +23,5 @@ const SidebarLinkContainer = styled(Box)(({ theme }) => ({
   cursor: 'pointer',
   display: 'flex',
   gap: '4px',
-  alignItems: 'center'
+  alignItems: 'flex-start'
 }));

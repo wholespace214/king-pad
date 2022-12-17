@@ -15,7 +15,9 @@ export const Layout = ({ children }: LayoutProps) => {
       <Header />
       <Wrapper>
         <KingPadSideBar />
-        <ContentContainer>{children}</ContentContainer>
+        <ContentWrapper>
+          <ContentContainer>{children}</ContentContainer>
+        </ContentWrapper>
         <ToastContainer
           position="bottom-right"
           autoClose={3000}
@@ -34,6 +36,12 @@ const Wrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   width: '100%',
   marginTop: '75px'
+}));
+
+const ContentWrapper = styled(Box)(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center'
 }));
 
 const ContentContainer = styled(Box)(({ theme }) => ({

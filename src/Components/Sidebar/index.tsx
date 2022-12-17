@@ -6,10 +6,16 @@ import { Box } from '@mui/material';
 import { useStore } from 'src/Context/StoreContext';
 import { useNavigate } from 'react-router-dom';
 
-export const SidebarItems = () => {
+interface SidebarItemProps {
+  setOpen?: (value: boolean) => void;
+}
+
+export const SidebarItems = (props: SidebarItemProps) => {
+  const { setOpen } = props;
   const { page, setPage } = useStore();
   const navigate = useNavigate();
   const handleLinkClicked = (val: number) => {
+    if (setOpen) setOpen(false);
     setPage(val);
     switch (val) {
       case 3:

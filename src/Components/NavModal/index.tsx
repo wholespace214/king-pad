@@ -40,7 +40,7 @@ export const NavModal = ({ isOpen, setOpen }: NavModalProps) => {
           </CloseButton>
         </Navbar>
         <DialogContent>
-          <SidebarItems />
+          <SidebarItems setOpen={setOpen} />
           <SidebarCard />
         </DialogContent>
       </DialogContainer>
