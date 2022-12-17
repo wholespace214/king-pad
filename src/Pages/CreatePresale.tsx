@@ -362,17 +362,18 @@ const VestingContainer = styled(Box)(({ theme }) => ({
 }));
 
 const VestingDetailsContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
+  marginTop: '16px',
   gap: '16px',
+  display: 'flex',
   width: '100%',
   flex: 4,
   [theme.breakpoints.down(1450)]: {
     flex: 'inherit',
     display: 'grid',
-    gridTemplateColumns: 'auto auto'
+    gridTemplateColumns: 'repeat(2, 2fr)'
   },
   [theme.breakpoints.down(571)]: {
-    gridTemplateColumns: 'auto'
+    gridTemplateColumns: 'repeat(1, 4fr)'
   }
 }));
 
