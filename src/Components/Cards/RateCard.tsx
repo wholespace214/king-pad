@@ -54,7 +54,7 @@ const InputUrl = styled('input')(({ theme }) => ({
   background: 'none',
   outline: 'none',
   border: 'none',
-  height: '20px',
+  height: '30px',
   fontSize: '20px',
   fontFamily: 'gotham-bold',
   color: theme.palette.primary.contrastText,

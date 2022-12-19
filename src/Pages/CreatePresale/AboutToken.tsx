@@ -1,7 +1,6 @@
 import { styled } from '@mui/system';
 import { Box } from '@mui/material';
 import { SmallText } from 'src/Components/Text/SmallText';
-import { MiniText } from 'src/Components/Text/MiniText';
 import { FaTelegramPlane, FaTwitter, FaYoutube, FaFacebookF, FaDiscord, FaInstagram } from 'react-icons/fa';
 
 export const AboutToken = () => {

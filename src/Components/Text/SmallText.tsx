@@ -14,7 +14,7 @@ const SmallTextContainer = styled(Box)(({ theme }) => ({
   fontSize: '16px',
   color: '#8462F6',
   textAlign: 'center',
-  fontWeight: '700',
+  fontFamily: 'gotham-bold',
   [theme.breakpoints.down('xs')]: {
     fontSize: '14px'
   }
