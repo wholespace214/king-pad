@@ -15,7 +15,7 @@ export const SidebarItems = (props: SidebarItemProps) => {
   const { page, setPage } = useStore();
   const navigate = useNavigate();
   const handleLinkClicked = (val: number) => {
-    if (setOpen) setOpen(false);
+    if (setOpen != null) setOpen(false);
     setPage(val);
     switch (val) {
       case 3:

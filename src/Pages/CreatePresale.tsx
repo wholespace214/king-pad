@@ -14,6 +14,7 @@ import {
   lightUsdtIcon,
   lightUsdcIcon
 } from 'src/Config/Images';
+import { toast } from 'react-toastify';
 import { Dropdown } from 'src/Components/Dropdown';
 import { RateCard } from 'src/Components/Cards/RateCard';
 import { RefundCard } from 'src/Components/Cards/RefundCard';
@@ -30,6 +31,9 @@ export const CreatePresale = () => {
   const [dateTime1, setDateTime1] = useState<Dayjs | null>(null);
   const [dateTime2, setDateTime2] = useState<Dayjs | null>(null);
   const [isVesting, setVesting] = useState(true);
+  const handleLaunch = () => {
+    toast.error('Please insert the contract address');
+  };
   return (
     <>
       <BannerCard>Banner ( to do ) </BannerCard>
@@ -150,7 +154,7 @@ export const CreatePresale = () => {
       </VestingContainer>
       <AboutToken />
       <TokenDescription />
-      <LauchButton>LAUNCH YOUR PRESALE</LauchButton>
+      <LauchButton onClick={handleLaunch}>LAUNCH YOUR PRESALE</LauchButton>
     </>
   );
 };

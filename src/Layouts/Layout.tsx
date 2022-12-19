@@ -24,7 +24,7 @@ export const Layout = ({ children }: LayoutProps) => {
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
-          theme="light"
+          theme="dark"
         />
       </Wrapper>
       <Footer />
