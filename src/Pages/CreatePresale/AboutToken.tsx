@@ -75,7 +75,7 @@ const InputUrl = styled('input')(({ theme }) => ({
   background: 'none',
   outline: 'none',
   border: 'none',
-  height: '20px',
+  height: '30px',
   color: theme.palette.primary.contrastText,
   '::placeholder': {
     color: theme.palette.primary.contrastText,
