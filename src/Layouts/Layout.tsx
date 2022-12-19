@@ -19,12 +19,13 @@ export const Layout = ({ children }: LayoutProps) => {
           <ContentContainer>{children}</ContentContainer>
         </ContentWrapper>
         <ToastContainer
-          position="bottom-right"
+          position="top-right"
           autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
           theme="dark"
+          style={{ zIndex: 1000, marginTop: '80px' }}
         />
       </Wrapper>
       <Footer />
