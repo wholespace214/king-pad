@@ -4,8 +4,9 @@ import { MiniText } from '../Text/MiniText';
 import { SmallText } from '../Text/SmallText';
 
 interface RefundCardProps {
+  name: string;
   isState: boolean;
-  setState: (value: boolean) => void;
+  setState: any;
 }
 
 interface RefundButtonProps {
@@ -13,15 +14,15 @@ interface RefundButtonProps {
 }
 
 export const RefundCard = (props: RefundCardProps) => {
-  const { isState, setState } = props;
+  const { name, isState, setState } = props;
   return (
     <RefundCardContainer>
       <SmallText>Refund</SmallText>
       <ButtonGroup>
-        <RefundButton state={isState} onClick={() => setState(true)}>
+        <RefundButton state={isState} onClick={() => setState(name, true)}>
           Burn
         </RefundButton>
-        <RefundButton state={!isState} onClick={() => setState(false)}>
+        <RefundButton state={!isState} onClick={() => setState(name, false)}>
           Refund
         </RefundButton>
       </ButtonGroup>

@@ -7,12 +7,13 @@ import { styled } from '@mui/system';
 import { NavigateBefore, NavigateNext } from '@mui/icons-material';
 
 interface DropdownProps {
+  name: string;
   itemValue: string;
-  setItemValue: (value: string) => void;
+  setItemValue: any;
 }
 
 export const Dropdown = (props: DropdownProps) => {
-  const { itemValue, setItemValue } = props;
+  const { name, itemValue, setItemValue } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isOpen = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -23,7 +24,7 @@ export const Dropdown = (props: DropdownProps) => {
   };
 
   const handleMenuClick = (e: React.MouseEvent<HTMLElement>) => {
-    setItemValue(e.currentTarget.innerText);
+    setItemValue(e.currentTarget.innerText, name);
     handleClose();
   };
 

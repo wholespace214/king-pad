@@ -6,7 +6,9 @@ import { SmallText } from '../Text/SmallText';
 
 interface RateCardProps {
   title: string;
-  value?: string;
+  name: string;
+  value?: string | number;
+  setValue: any;
   content?: string;
   help: string;
   isDisabled?: boolean;
@@ -18,11 +20,19 @@ interface containerProps {
 }
 
 export const RateCard = (props: RateCardProps) => {
-  const { title, value, content, help, isDisabled, style } = props;
+  const { title, name, value, content, help, isDisabled, style, setValue } = props;
   return (
     <RateCardContainer isDisabled={isDisabled === undefined ? false : isDisabled} sx={style}>
       <SmallText>{title}</SmallText>
-      <InputUrl type={'number'} placeholder="-" value={value} disabled={isDisabled} maxLength={100} />
+      <InputUrl
+        type={'number'}
+        placeholder="-"
+        value={value === 0 ? '' : value}
+        name={name}
+        disabled={isDisabled}
+        maxLength={100}
+        onChange={(e) => setValue(name, e.target.value)}
+      />
       {content !== undefined && <ContentText>{content}</ContentText>}
       <MiniText>{help}</MiniText>
     </RateCardContainer>

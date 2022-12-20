@@ -3,47 +3,84 @@ import { Box } from '@mui/material';
 import { SmallText } from 'src/Components/Text/SmallText';
 import { FaTelegramPlane, FaTwitter, FaYoutube, FaFacebookF, FaDiscord, FaInstagram } from 'react-icons/fa';
 
-export const AboutToken = () => {
+interface AboutTokenProps {
+  state: any;
+  setState: (prop: string, value: string | number | boolean) => void;
+}
+
+export const AboutToken = (props: AboutTokenProps) => {
+  const { state, setState } = props;
   return (
     <AboutTokenContainer>
-      <TokenDatailInfoCard title="Logo (250x250 px)" />
-      <TokenDatailInfoCard title="Cover Image (1005x237 px)" />
-      <TokenDatailInfoCard title="Youtube video" />
-      <TokenDatailInfoCard title="Website" />
-      <TokenUrlCard icon={<FaTelegramPlane fontSize={25} />} />
-      <TokenUrlCard icon={<FaTwitter fontSize={25} />} />
-      <TokenUrlCard icon={<FaYoutube fontSize={25} />} />
-      <TokenUrlCard icon={<FaFacebookF fontSize={25} />} />
-      <TokenUrlCard icon={<FaDiscord fontSize={25} />} />
-      <TokenUrlCard icon={<FaInstagram fontSize={25} />} />
+      <TokenDatailInfoCard name="logoUrl" value={state.logoUrl} setState={setState} title="Logo (250x250 px)" />
+      <TokenDatailInfoCard
+        name="coverImgUrl"
+        value={state.coverImgUrl}
+        setState={setState}
+        title="Cover Image (1005x237 px)"
+      />
+      <TokenDatailInfoCard
+        name="youtubeVideoUrl"
+        value={state.youtubeVideoUrl}
+        setState={setState}
+        title="Youtube video"
+      />
+      <TokenDatailInfoCard name="websiteUrl" value={state.websiteUrl} setState={setState} title="Website" />
+      <TokenUrlCard
+        name="telegramUrl"
+        value={state.telegramUrl}
+        setState={setState}
+        icon={<FaTelegramPlane fontSize={25} />}
+      />
+      <TokenUrlCard name="twitterUrl" value={state.twitterUrl} setState={setState} icon={<FaTwitter fontSize={25} />} />
+      <TokenUrlCard name="youtubeUrl" value={state.youtubeUrl} setState={setState} icon={<FaYoutube fontSize={25} />} />
+      <TokenUrlCard
+        name="facebookUrl"
+        value={state.facebookUrl}
+        setState={setState}
+        icon={<FaFacebookF fontSize={25} />}
+      />
+      <TokenUrlCard name="discordUrl" value={state.discordUrl} setState={setState} icon={<FaDiscord fontSize={25} />} />
+      <TokenUrlCard
+        name="instagramUrl"
+        value={state.instagramUrl}
+        setState={setState}
+        icon={<FaInstagram fontSize={25} />}
+      />
     </AboutTokenContainer>
   );
 };
 
 interface InfoCardProps {
+  name: string;
+  value: string;
+  setState: (prop: string, value: string | number | boolean) => void;
   title: string;
 }
 
 const TokenDatailInfoCard = (props: InfoCardProps) => {
-  const { title } = props;
+  const { name, value, setState, title } = props;
   return (
     <TokenDetailInfoCardContainer>
       <SmallText>{title}</SmallText>
-      <InputUrl placeholder="Insert url here" />
+      <InputUrl placeholder="Insert url here" value={value} onChange={(e) => setState(name, e.currentTarget.value)} />
     </TokenDetailInfoCardContainer>
   );
 };
 
 interface UrlCardProps {
+  name: string;
+  value: string;
+  setState: (prop: string, value: string | number | boolean) => void;
   icon: React.ReactNode;
 }
 
 const TokenUrlCard = (props: UrlCardProps) => {
-  const { icon } = props;
+  const { name, value, setState, icon } = props;
   return (
     <TokenUrlCardContainer>
       <TokenUrlIcon>{icon}</TokenUrlIcon>
-      <InputUrl placeholder="Insert url here" />
+      <InputUrl placeholder="Insert url here" value={value} onChange={(e) => setState(name, e.currentTarget.value)} />
     </TokenUrlCardContainer>
   );
 };

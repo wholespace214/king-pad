@@ -23,17 +23,72 @@ import { Dayjs } from 'dayjs';
 import { KingpassCard } from 'src/Components/Cards/KingpassCard';
 import { AboutToken } from './CreatePresale/AboutToken';
 import { TokenDescription } from './CreatePresale/TokenDescription';
+import { isEmpty, isPositiveReal, isZero } from 'src/Utils/validator';
 
 export const CreatePresale = () => {
-  const [currecy, setCurrency] = useState(0);
-  const [itemValue, setItemValue] = useState('Pancakeswap');
-  const [isBurn, setBurn] = useState(true);
+  const [state, setState] = useState({
+    name: '',
+    symbol: '',
+    decimal: 0,
+    currency: 0,
+    itemValue: 'Pancakeswap',
+    presaleRate: 0,
+    listingRate: 0,
+    softCap: 0,
+    hardCap: 0,
+    minPresale: 0,
+    maxPresale: 0,
+    liq: 0,
+    liqLock: 0,
+    isVesting: false,
+    isBurn: true,
+    teamVestToken: 0,
+    releaseAfter: 0,
+    releaseAmount: 0,
+    vestPeriod: 0,
+    tokenCycle: 0,
+    logoUrl: '',
+    coverImgUrl: '',
+    youtubeVideoUrl: '',
+    websiteUrl: '',
+    telegramUrl: '',
+    youtubeUrl: '',
+    facebookUrl: '',
+    discordUrl: '',
+    instagramUrl: '',
+    description: ''
+  });
+
+  const handleState = (prop: string, value: string | number | boolean) => {
+    setState({ ...state, [prop]: value });
+  };
+
   const [dateTime1, setDateTime1] = useState<Dayjs | null>(null);
   const [dateTime2, setDateTime2] = useState<Dayjs | null>(null);
-  const [isVesting, setVesting] = useState(true);
+
   const handleLaunch = () => {
-    toast.error('Please insert the contract address');
+    console.log('state: ', state);
+    if (isEmpty(state.name)) toast.error('Token name must exist');
+    else if (isEmpty(state.symbol)) toast.error('Token Symbol must exist');
+    else if (isZero(state.decimal)) toast.error('Decimal must exist');
+    else if (!isPositiveReal(state.decimal)) toast.error('Decial must be positive real number');
+    else if (isZero(state.presaleRate)) toast.error('Presale Rate must exist');
+    else if (isZero(state.listingRate)) toast.error('Listing Rate must exist');
+    else if (isZero(state.softCap)) toast.error('Softcap must exist');
+    else if (isZero(state.hardCap)) toast.error('HardCap must exist');
+    else if (isZero(state.minPresale)) toast.error('Min Contribution must exist');
+    else if (isZero(state.maxPresale)) toast.error('Max Contribution must exist');
+    else if (isZero(state.liq)) toast.error('Liquidity % must exist');
+    else if (isZero(state.liqLock)) toast.error('Liquidity Lock days must exist');
+    else if (state.isVesting) {
+      if (isZero(state.teamVestToken)) toast.error('Total team vesting tokens must exist');
+      if (isZero(state.releaseAfter)) toast.error('Total team vesting tokens must exist');
+      if (isZero(state.releaseAmount)) toast.error('First Release Amount must exist');
+      if (isZero(state.vestPeriod)) toast.error('Veting perios each cycle must exist');
+      if (isZero(state.tokenCycle)) toast.error('Token release each cycle must exist');
+    }
   };
+
   return (
     <>
       <BannerCard>Banner ( to do ) </BannerCard>
@@ -43,9 +98,15 @@ export const CreatePresale = () => {
             <SmallText>Token address</SmallText>
             <InputUrl placeholder="Insert contract address" />
             <TokenInfo>
-              <TokenUnit title="Name" />
-              <TokenUnit title="Symbol" />
-              <TokenUnit title="Decimal" type="number" />
+              <TokenUnit title="Name" content={state.name} name="name" setContent={handleState} />
+              <TokenUnit title="Symbol" name="symbol" content={state.symbol} setContent={handleState} />
+              <TokenUnit
+                title="Decimal"
+                name="decimal"
+                type="number"
+                content={state.decimal}
+                setContent={handleState}
+              />
             </TokenInfo>
           </TokenAddressCard>
           <TokenCurrencyCard>
@@ -55,105 +116,166 @@ export const CreatePresale = () => {
                 darkIcon={BnbIcon}
                 lightIcon={lightBnbIcon}
                 name="BNB"
-                isClicked={currecy === 0}
-                onClick={() => setCurrency(0)}
+                isClicked={state.currency === 0}
+                onClick={() => setState({ ...state, currency: 0 })}
               />
               <TokenButton
                 darkIcon={BusdIcon}
                 lightIcon={lightBusdIcon}
                 name="BUSD"
-                isClicked={currecy === 1}
-                onClick={() => setCurrency(1)}
+                isClicked={state.currency === 1}
+                onClick={() => setState({ ...state, currency: 1 })}
               />
               <TokenButton
                 darkIcon={UsdtIcon}
                 lightIcon={lightUsdtIcon}
                 name="USDT"
-                isClicked={currecy === 2}
-                onClick={() => setCurrency(2)}
+                isClicked={state.currency === 2}
+                onClick={() => setState({ ...state, currency: 2 })}
               />
               <TokenButton
                 darkIcon={UsdcIcon}
                 lightIcon={lightUsdcIcon}
                 name="USDC"
-                isClicked={currecy === 3}
-                onClick={() => setCurrency(3)}
+                isClicked={state.currency === 3}
+                onClick={() => setState({ ...state, currency: 3 })}
               />
             </CurrencyButtons>
             <CurrencySupport>Choose the currency you want to create the pair with</CurrencySupport>
           </TokenCurrencyCard>
           <TokenSwap>
             <TokenSwapLabel>Router</TokenSwapLabel>
-            <Dropdown itemValue={itemValue} setItemValue={setItemValue} />
+            <Dropdown name="itemValue" itemValue={state.itemValue} setItemValue={handleState} />
           </TokenSwap>
         </TokenDetails>
         <SupportCard />
       </TokenDetailsContainer>
       <RateCardContainer>
-        <RateCard title="Presale rate" help="If I spend 1 BNB, how many token will I receive?" />
-        <RateCard title="Listing rate" help="If I spend 1 BNB, how many token will I receive?" />
+        <RateCard
+          title="Presale rate"
+          name="presaleRate"
+          help="If I spend 1 BNB, how many token will I receive?"
+          value={state.presaleRate}
+          setValue={handleState}
+        />
+        <RateCard
+          title="Listing rate"
+          name="listingRate"
+          help="If I spend 1 BNB, how many token will I receive?"
+          value={state.listingRate}
+          setValue={handleState}
+        />
       </RateCardContainer>
       <BNBCardContainer>
-        <RateCard title="Softcap" content="BNB" help="The minimum amount of allocated BNB in your presale." />
-        <RateCard title="Hardcap" content="BNB" help="The minimum amount of allocated BNB in your presale." />
+        <RateCard
+          title="Softcap"
+          name="softCap"
+          content="BNB"
+          help="The minimum amount of allocated BNB in your presale."
+          value={state.softCap}
+          setValue={handleState}
+        />
+        <RateCard
+          title="Hardcap"
+          name="hardCap"
+          content="BNB"
+          help="The minimum amount of allocated BNB in your presale."
+          value={state.hardCap}
+          setValue={handleState}
+        />
         <RateCard
           title="Min contribution"
+          name="minPresale"
           content="BNB"
           help="The minimum amount that must be contributed to your presale."
+          value={state.minPresale}
+          setValue={handleState}
         />
-        <RateCard title="Max contribution" content="BNB" help="The maximum conitrbution amount allowed per wallet." />
+        <RateCard
+          title="Max contribution"
+          name="maxPresale"
+          content="BNB"
+          help="The maximum conitrbution amount allowed per wallet."
+          value={state.maxPresale}
+          setValue={handleState}
+        />
       </BNBCardContainer>
       <BNBCardContainer>
         <RateCard
           title="Liquidity %"
+          name="liq"
           help="Enter the percentage of raised funds that should be allocated to Liquidiity on Exchange (Min 51% Max 100%)"
+          value={state.liq}
+          setValue={handleState}
         />
-        <RateCard title="Liquidity lock" content="DAYS" help="How long do you want to lock LP after launch?" />
-        <RefundCard isState={isBurn} setState={setBurn} />
+        <RateCard
+          title="Liquidity lock"
+          name="liqLock"
+          content="DAYS"
+          help="How long do you want to lock LP after launch?"
+          value={state.liqLock}
+          setValue={handleState}
+        />
+        <RefundCard name="isBurn" isState={state.isBurn} setState={handleState} />
       </BNBCardContainer>
       <PresaleContainer>
         <PresaleCard title="Presale starts" state={dateTime1} setState={setDateTime1} />
         <PresaleCard title="Presale end" state={dateTime2} setState={setDateTime2} />
         <KingpassCard />
       </PresaleContainer>
-      <EnableVestButton onClick={() => setVesting(!isVesting)} status={isVesting}>
+      <EnableVestButton onClick={() => setState({ ...state, isVesting: !state.isVesting })} status={state.isVesting}>
         Enable team vesting
       </EnableVestButton>
       <VestingContainer>
         <RateCard
           title="Total team vesting tokens"
+          name="teamVestToken"
           help="How many tokens do you want to lock?"
-          isDisabled={isVesting}
+          isDisabled={state.isVesting}
+          value={state.teamVestToken}
+          setValue={handleState}
         />
         <VestingDetailsContainer>
           <RateCard
             title="First release after listing"
+            name="releaseAfter"
             content="Days"
             help="After how many days the vesting starts?"
-            isDisabled={isVesting}
+            isDisabled={state.isVesting}
+            value={state.releaseAfter}
+            setValue={handleState}
           />
           <RateCard
             title="First release Amount"
+            name="releaseAmount"
             content="%"
             help="How many token do you want to unlock in the first release?"
-            isDisabled={isVesting}
+            isDisabled={state.isVesting}
+            value={state.releaseAmount}
+            setValue={handleState}
           />
           <RateCard
             title="Vesting period each cycle"
+            name="vestPeriod"
             content="Days"
             help="How often do you want to unlock your tokens?"
-            isDisabled={isVesting}
+            isDisabled={state.isVesting}
+            value={state.vestPeriod}
+            setValue={handleState}
           />
           <RateCard
             title="Token release each cycle"
+            name="tokenCycle"
             content="%"
             help="How many token do you want to ulock each cycle?"
-            isDisabled={isVesting}
+            isDisabled={state.isVesting}
+            value={state.tokenCycle}
+            setValue={handleState}
           />
         </VestingDetailsContainer>
       </VestingContainer>
-      <AboutToken />
-      <TokenDescription />
+      <AboutToken state={state} setState={handleState} />
+      <TokenDescription name="description" value={state.description} setState={handleState} />
       <LauchButton onClick={handleLaunch}>LAUNCH YOUR PRESALE</LauchButton>
     </>
   );
@@ -161,15 +283,23 @@ export const CreatePresale = () => {
 
 interface TokenUnitProps {
   title: string;
-  content?: string;
+  name: string;
+  content?: string | number;
   type?: string;
+  setContent: any;
 }
 
-const TokenUnit = ({ title, content, type }: TokenUnitProps) => {
+const TokenUnit = ({ title, name, content, type, setContent }: TokenUnitProps) => {
   return (
     <TokenUnitContainer>
       <SmallText>{title}</SmallText>
-      <InputText placeholder="-" value={content} type={type} />
+      <InputText
+        placeholder="-"
+        value={content === 0 ? '' : content}
+        type={type}
+        name={name}
+        onChange={(e) => setContent(name, e.target.value)}
+      />
     </TokenUnitContainer>
   );
 };

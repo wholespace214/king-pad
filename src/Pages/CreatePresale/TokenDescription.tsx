@@ -1,11 +1,18 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 
-export const TokenDescription = () => {
+interface TokenDescriptionProps {
+  name: string;
+  value: string;
+  setState: (prop: string, value: string | number | boolean) => void;
+}
+
+export const TokenDescription = (props: TokenDescriptionProps) => {
+  const { name, value, setState } = props;
   return (
     <TokenDescriptionContainer>
       <DescriptionText>Project description (Max 1000 characters)</DescriptionText>
-      <TeatArea placeholder="Describe your project" />
+      <TeatArea placeholder="Describe your project" value={value} onChange={(e) => setState(name, e.target.value)} />
     </TokenDescriptionContainer>
   );
 };
