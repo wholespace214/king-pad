@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
-import { SiMedium } from 'react-icons/si';
-import { Twitter, Telegram, GitHub, YouTube } from '@mui/icons-material';
+import { SiMedium, SiGitbook } from 'react-icons/si';
 import { LaunchPadIcon } from 'src/Config/Images';
+import { Twitter, Telegram, YouTube } from '@mui/icons-material';
 
 export const SafePlaceCard = () => {
   return (
@@ -26,8 +26,8 @@ export const SafePlaceCard = () => {
           <SocialIcon href={'https://www.youtube.com/@kingfinanceco'} rel="noopener noreferrer">
             <YouTube />
           </SocialIcon>
-          <SocialIcon rel="noopener noreferrer">
-            <GitHub />
+          <SocialIcon href={'https://king-finance.gitbook.io/king-whitepaper/'} rel="noopener noreferrer">
+            <SiGitbook size={24} />
           </SocialIcon>
           <SocialIcon href={'https://medium.com/@kingfinance'} rel="noopener noreferrer">
             <SiMedium size={24} />

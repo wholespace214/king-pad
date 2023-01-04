@@ -3,7 +3,7 @@ import MenuKing from '../Assets/svg/kinglogo.svg';
 import MenuKingPass from '../Assets/svg/kingpass.svg';
 import BnbLogo from '../Assets/svg/bnbchain.svg';
 import FooterLogoSvg from '../Assets/svg/footerlogo.svg';
-import GithubIcon from '../Assets/svg/iconboxgithub.svg';
+import GitbookIcon from '../Assets/svg/iconboxgitbook.svg';
 import MediumIcon from '../Assets/svg/iconboxmedium.svg';
 import TelegramIcon from '../Assets/svg/iconboxtg.svg';
 import TwitterIcon from '../Assets/svg/iconboxtwitter.svg';
@@ -27,7 +27,7 @@ export {
   MenuKingPass,
   BnbLogo,
   FooterLogoSvg,
-  GithubIcon,
+  GitbookIcon,
   MediumIcon,
   TelegramIcon,
   TwitterIcon,

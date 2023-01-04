@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
-import { FooterLogoSvg, GithubIcon, MediumIcon, TelegramIcon, TwitterIcon, YoutubeIcon } from 'src/Config/Images';
+import { FooterLogoSvg, GitbookIcon, MediumIcon, TelegramIcon, TwitterIcon, YoutubeIcon } from 'src/Config/Images';
 
 export const Footer = () => {
   return (
@@ -26,8 +26,8 @@ export const Footer = () => {
         <a href={'https://www.youtube.com/@kingfinanceco'} rel="noopener noreferrer">
           <SocialIcon src={YoutubeIcon} alt="social-icon" />
         </a>
-        <a rel="noopener noreferrer">
-          <SocialIcon src={GithubIcon} alt="social-icon" />
+        <a href={'https://king-finance.gitbook.io/king-whitepaper/'} rel="noopener noreferrer">
+          <SocialIcon src={GitbookIcon} alt="social-icon" />
         </a>
         <a href={'https://medium.com/@kingfinance'} rel="noopener noreferrer">
           <SocialIcon src={MediumIcon} alt="social-icon" />
