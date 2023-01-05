@@ -115,7 +115,7 @@ const VestingCard = styled(Box)(({ theme }) => ({
   boxShadow: '0px 3px 6px #00000029',
   backgroundColor: theme.palette.primary.main,
   width: '100%',
-  padding: '35px 35px 74px 35px',
+  padding: '35px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center'
@@ -183,16 +183,20 @@ const CircleBox = styled(Box)(({ theme }) => ({
 const VestingValue = styled(Box)(({ theme }) => ({
   fontSize: '35px',
   color: theme.palette.primary.contrastText,
-  //   lineHeight: '40px',
+  height: '40px',
   fontWeight: '600',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   [theme.breakpoints.down('mobile')]: {
-    fontSize: '22px'
-    // lineHeight: '20px'
+    fontSize: '22px',
+    height: '20px'
   }
 }));
 
 const VestingUnit = styled(Box)(({ theme }) => ({
   fontSize: '14px',
+  height: '15px',
   color: theme.palette.primary.contrastText,
   [theme.breakpoints.down('mobile')]: {
     fontSize: '11px'
