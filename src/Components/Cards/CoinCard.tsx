@@ -11,7 +11,8 @@ import {
 import { FaFacebookF, FaDiscord } from 'react-icons/fa';
 import { Box, Button } from '@mui/material';
 import { styled } from '@mui/system';
-import { CircularProgressBar } from '../CircularProgress';
+import { CircularProgressBar } from '../Progress/CircularProgress';
+import { useNavigate } from 'react-router-dom';
 
 interface CoinCardProps {
   role: boolean;
@@ -23,6 +24,7 @@ interface CoinCardProps {
 }
 
 export const CoinCard = ({ role, status, coinImg, coinName, percentage, time }: CoinCardProps) => {
+  const navigate = useNavigate();
   return (
     <CardContainer>
       <Status>
@@ -109,7 +111,7 @@ export const CoinCard = ({ role, status, coinImg, coinName, percentage, time }: 
           )}
           <TokenLaunchTime>{time != null ? time : '-'}</TokenLaunchTime>
         </TokenLaunch>
-        <TokenExplorer>Explore</TokenExplorer>
+        <TokenExplorer onClick={() => navigate('/explore')}>Explore</TokenExplorer>
       </TokenAction>
     </CardContainer>
   );

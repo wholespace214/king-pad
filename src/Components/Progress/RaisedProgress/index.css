@@ -1,0 +1,25 @@
+.circle-background,
+.circle-progress {
+  fill: none;
+}
+
+/* .circle-background {
+  stroke: #ddd;
+} */
+
+.circle-progress {
+  stroke: #83ffd4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.progress-text {
+  font-size: 18px;
+  font-family: 'gotham-bold';
+  fill: #8462f6;
+}
+
+.raised-text {
+  font-size: 12px;
+  fill: #8462f6;
+}

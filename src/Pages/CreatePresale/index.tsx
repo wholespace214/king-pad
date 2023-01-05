@@ -21,8 +21,8 @@ import { RefundCard } from 'src/Components/Cards/RefundCard';
 import { PresaleCard } from 'src/Components/Cards/PresaleCard';
 import { Dayjs } from 'dayjs';
 import { KingpassCard } from 'src/Components/Cards/KingpassCard';
-import { AboutToken } from './CreatePresale/AboutToken';
-import { TokenDescription } from './CreatePresale/TokenDescription';
+import { AboutToken } from './AboutToken';
+import { TokenDescription } from './TokenDescription';
 import { isEmpty, isPositiveReal, isZero } from 'src/Utils/validator';
 
 export const CreatePresale = () => {

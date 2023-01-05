@@ -9,6 +9,7 @@ import { Layout } from './Layouts/Layout';
 import { Home } from './Pages/Home';
 import StoreProvider from './Context/StoreContext';
 import { CreatePresale } from './Pages/CreatePresale';
+import { CoinExplore } from './Pages/CoinExplore';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Routes>
                 <Route path={PUBLIC_ROUTES.default} element={<Home />} />
                 <Route path={PUBLIC_ROUTES.home} element={<Home />} />
+                <Route path={PUBLIC_ROUTES.explore} element={<CoinExplore />} />
                 <Route path={PUBLIC_ROUTES.create} element={<CreatePresale />} />
               </Routes>
             </Layout>
