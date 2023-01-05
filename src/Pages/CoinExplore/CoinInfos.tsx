@@ -183,11 +183,11 @@ const CircleBox = styled(Box)(({ theme }) => ({
 const VestingValue = styled(Box)(({ theme }) => ({
   fontSize: '35px',
   color: theme.palette.primary.contrastText,
-  lineHeight: '40px',
+  //   lineHeight: '40px',
   fontWeight: '600',
   [theme.breakpoints.down('mobile')]: {
-    fontSize: '22px',
-    lineHeight: '20px'
+    fontSize: '22px'
+    // lineHeight: '20px'
   }
 }));
 
