@@ -185,9 +185,6 @@ const VestingValue = styled(Box)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
   height: '40px',
   fontWeight: '600',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
   [theme.breakpoints.down('mobile')]: {
     fontSize: '22px',
     height: '20px'
