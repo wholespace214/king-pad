@@ -1,9 +1,17 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
+import { useEffect } from 'react';
 import { Language, Twitter, Telegram, YouTube } from '@mui/icons-material';
 import { FaDiscord } from 'react-icons/fa';
+import { KINGPAD_infoGetter } from 'src/Contracts';
 
 export const ExploreBanner = () => {
+  useEffect(() => {
+    (async () => {
+      const presaleInfo = await KINGPAD_infoGetter.retunInfos('');
+    })();
+  }, []);
+
   return (
     <ExploreBannerContainer>
       <BannerImg></BannerImg>

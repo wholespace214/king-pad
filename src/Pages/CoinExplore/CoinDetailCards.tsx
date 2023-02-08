@@ -36,7 +36,7 @@ export const CoinDetailCards = () => {
         </ProgressBar>
       </CardBox>
       <CardBox about="Contribute-Card">
-        <CardLabel>Contribte now</CardLabel>
+        <CardLabel>Contriubte now</CardLabel>
         <CardButtonGroup>
           <BNBButton variant="outlined">0.1 BNB</BNBButton>
           <CardButton>Buy</CardButton>

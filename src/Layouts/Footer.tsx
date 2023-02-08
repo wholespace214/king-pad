@@ -5,7 +5,7 @@ import { FooterLogoSvg, GitbookIcon, MediumIcon, TelegramIcon, TwitterIcon, Yout
 export const Footer = () => {
   return (
     <FooterContainer>
-      <LogoSection>
+      <LogoSection href="https://kingworld.finance" target="_blank" rel="noopenner noreferrer">
         <SmallText>POWERD BY</SmallText>
         <KingLogo src={FooterLogoSvg} alt="footer-logo" />
       </LogoSection>
@@ -47,11 +47,13 @@ const FooterContainer = styled(Box)(({ theme }) => ({
   gap: '2rem'
 }));
 
-const LogoSection = styled(Box)(({ theme }) => ({
+const LogoSection = styled('a')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: '3px'
+  gap: '3px',
+  outline: "none",
+  cursor: "pointer"
 }));
 
 // const FooterContent = styled(Box)(({ theme }) => ({}));
