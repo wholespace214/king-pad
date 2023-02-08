@@ -5,7 +5,7 @@ import { FooterLogoSvg, GitbookIcon, MediumIcon, TelegramIcon, TwitterIcon, Yout
 export const Footer = () => {
   return (
     <FooterContainer>
-      <LogoSection href="https://kingworld.finance" target="_blank" rel="noopenner noreferrer">
+      <LogoSection href="https://kingworld.finance" target="_blank" rel="noopener noreferrer">
         <SmallText>POWERD BY</SmallText>
         <KingLogo src={FooterLogoSvg} alt="footer-logo" />
       </LogoSection>
