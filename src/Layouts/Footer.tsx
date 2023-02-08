@@ -53,7 +53,8 @@ const LogoSection = styled('a')(({ theme }) => ({
   alignItems: 'center',
   gap: '3px',
   outline: "none",
-  cursor: "pointer"
+  cursor: "pointer",
+  textDecoration: "none"
 }));
 
 // const FooterContent = styled(Box)(({ theme }) => ({}));
